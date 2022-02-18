@@ -1,0 +1,1489 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta name="description" content="万境本清，唯人自恼">
+	<meta name="keywords" content="Hookjover,黄建伟,设计,网页设计,UI,个人网站">
+	<link rel="shortcut icon" href="img/logoico3.ico">
+	<title>播种阳光的少年</title>
+	<script src="jquery.js"></script>
+
+	<style>
+		@keyframes circlebian {
+			from {
+				transform: scale(1, 1);
+			}
+
+			to {
+				transform: scale(0.6, 0.6);
+			}
+		}
+
+
+		@font-face {
+			font-family: english;
+			src: url(font/Myriad-Pro-Light_31642.ttf);
+		}
+
+		@font-face {
+			font-family: chinese;
+			src: url(font/chinese.ttf);
+		}
+
+		@font-face {
+			font-family: title;
+			src: url(font/MyriadPro-Bold.otf);
+		}
+
+
+
+		html,
+		body {
+			height: 100%;
+			max-width: 100%;
+			margin: 0;
+			/* overflow:hidden;*/
+			font-family: "微软雅黑";
+			background: #fff;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+
+		.clearfix {
+			clear: both;
+		}
+
+		#space {
+			width: 100%;
+			height: 100%;
+		}
+
+		.whole {
+			width: 0;
+			height: 0;
+			;
+			position: absolute;
+			z-index: 1000;
+			top: 0;
+			background: none;
+		}
+
+		welc {
+			position: absolute;
+			z-index: 1100;
+			color: #fff;
+			left: 50%;
+			top: 38%;
+			font-size: 60px;
+			width: 400px;
+			height: 80px;
+			display: block;
+			text-align: center;
+			margin-left: -200px;
+			border: 1px solid #fff;
+			font-family: "english";
+			line-height: 80px;
+			cursor: pointer;
+			opacity: 0;
+			transition: opacity .5s;
+			background: none;
+		}
+
+		.stopmusic {
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			width: 32px;
+			cursor: pointer;
+			z-index: 19999;
+			height: 32px;
+		}
+
+		.stopmusic img {
+			width: 100%;
+		}
+
+		welc:hover {
+			background: rgba(255, 255, 255, .8);
+			color: #000;
+		}
+
+		.nav {
+			width: 100%;
+			position: fixed;
+			z-index: 9999;
+			top: -2%;
+			opacity: 0;
+			transition: opacity 1s;
+			background: none;
+		}
+
+		.nav img {
+			float: left;
+			height: 30px;
+			margin-top: 35px;
+			margin-left: 60px;
+		}
+
+		.leftnav {
+			float: right;
+			margin-right: 60px;
+		}
+
+		.nav li {
+			float: left;
+			text-align: right;
+			display: block;
+		}
+
+		.leftnav a {
+			color: #fff;
+			font-size: 14px;
+			font-family: "english";
+			line-height: 100px;
+			transition: all .4s;
+			opacity: .5;
+			display: block;
+			padding-left: 50px;
+			letter-spacing: 1px;
+		}
+
+		.leftnav a:hover {
+			opacity: 1;
+			color: #ff7373;
+		}
+
+		.xiaonav {
+			float: right;
+			margin-top: 30px;
+			display: none;
+			cursor: pointer;
+		}
+
+		.xiaonav div {
+			width: 40px;
+			height: 1px;
+			background: #fff;
+			margin-bottom: 15px;
+			transition: all .4s;
+		}
+
+		.ddxuanzhuana {
+			transform-origin: left;
+			transform: rotate(45deg);
+		}
+
+		.ddxuanzhuanb {
+			transform-origin: left;
+			transform: rotate(-45deg);
+		}
+
+		.dlnav {
+			width: 100%;
+			position: absolute;
+			right: -100%;
+		}
+
+		.dlnav dd {
+			width: 100%;
+			background: rgba(255, 54, 58, .7);
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.dlnav a {
+			font-family: "english";
+			color: #FFF;
+			text-align: center;
+			line-height: 40px;
+			font-size: 12px;
+		}
+
+		/*.dlnav dd:hover{background:rgba(255,54,58,1);}*/
+
+
+
+		.photo {
+			width: 150px;
+			margin: 0 auto;
+			opacity: 0;
+			transition: all .8s;
+			margin-top: 80px;
+		}
+
+		.mec {
+			width: 100%;
+			height: 150px;
+			border-radius: 50%;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.mec img {
+			width: 100%;
+			display: block;
+		}
+
+		.name {
+			width: 100%;
+			height: 30px;
+			text-align: center;
+			font-family: "chinese";
+			font-size: 16px;
+			position: absolute;
+			bottom: -30;
+			background: rgba(255, 255, 255, .7);
+			left: 50%;
+			margin-left: -75px;
+			line-height: 30px;
+			font-weight: bold;
+		}
+
+		.me {
+			width: 100%;
+			text-align: center;
+			font-family: "chinese";
+			font-size: 16px;
+			color: #fff;
+			margin-top: 20px;
+			font-weight: bold;
+		}
+
+		.career {
+			width: 100%;
+			position: absolute;
+			opacity: 0;
+			transition: opacity .8s;
+			bottom: 50px;
+			overflow: hidden;
+		}
+
+		.about>img {
+			display: block;
+			position: absolute;
+			bottom: 38px;
+			width: auto;
+		}
+
+		.circle {
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0 0 12px #fff;
+			animation: circlebian 2s infinite alternate linear;
+			cursor: pointer;
+			transform: scale(1, 1);
+			margin-left: 45%;
+			margin-top: 10px;
+		}
+
+		.time {
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			font-family: "english";
+			margin-top: 10px;
+		}
+
+		.sanjiao {
+			width: 35px;
+			margin-left: 39%;
+			height: 44px;
+			transition: opacity 1s;
+			opacity: 0;
+		}
+
+		.about {
+			max-width: 1400px;
+			transition: opacity 2s;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		.story {
+			width: 14%;
+			float: left;
+			margin-left: 5%;
+		}
+
+		.cell {
+			background: #fff;
+			width: auto;
+			text-align: center;
+			font-family: "chinese";
+			font-size: 18px;
+			color: #ff7373;
+			font-weight: bold;
+			padding: 40px 10px;
+			transition: opacity 1s;
+			opacity: 0;
+		}
+
+		.cell h1 {
+			width: 100%;
+			text-align: center;
+			font-family: "chinese";
+			font-size: 36px;
+			color: #ff7373;
+		}
+
+		.cell h2 {
+			width: 100%;
+			text-align: center;
+			font-family: "chinese";
+			font-size: 16px;
+			color: #ff7373;
+			margin-top: 20px;
+		}
+
+		.tt {
+			width: 100%;
+		}
+
+		.skill {
+			width: 100%;
+			background: #fff;
+		}
+
+		.titlea span {
+			font-family: "title", "微软雅黑";
+			font-size: 48px;
+			text-align: center;
+			display: block;
+			margin-top: 80px;
+			font-weight: bold;
+		}
+
+		.titlea {
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		.ability {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.ability span {
+			letter-spacing: 1px;
+		}
+
+		.ability div {
+			width: 30%;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			float: left;
+			margin-top: 60px;
+		}
+
+		.diva {
+			/*border:2px solid #73a1ff;*/
+			box-sizing: border-box;
+		}
+
+		.divb {
+			/*border:2px solid #ff7373;*/
+			margin-left: 5%;
+			box-sizing: border-box;
+		}
+
+		.divc {
+			/*border:2px solid #4cff88;*/
+			margin-left: 5%;
+			box-sizing: border-box;
+		}
+
+		.ability span {
+			text-align: center;
+			font-family: "english";
+			display: block;
+			line-height: 30px;
+		}
+
+
+		.app {
+			max-width: 1400px;
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+
+		.app img {
+			width: 100%;
+			display: block;
+		}
+
+		/*.imgcon img{transition:all .2s;}*/
+
+		#aabout {
+			height: 2px;
+			background: #ff7373;
+			margin-top: -25px;
+		}
+
+
+		.gif {
+			max-width: 1300px;
+			margin: 0 auto;
+		}
+
+		.gif>div {
+			float: left;
+			width: 30%;
+			margin-top: 60px;
+			position: relative;
+			cursor: pointer;
+		}
+
+		.gif span {
+			display: block;
+		}
+
+		.divd {
+			margin-left: 5%;
+		}
+
+		.dive {
+			margin-left: 5%;
+		}
+
+		.gif img {
+			width: 100%;
+			display: block;
+		}
+
+		.gifmask {
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 76, 79, .4);
+			position: absolute;
+			top: 0;
+		}
+
+		.youwei {
+			max-width: 1300px;
+			margin: 0 auto;
+			margin-top: 60px;
+		}
+
+		.uv {
+			max-width: 1300px;
+			margin: 0 auto;
+			margin-top: 60px;
+		}
+
+		.uv img {
+			display: block;
+			width: 100%;
+		}
+
+		.youwei img {
+			display: block;
+			width: 100%;
+			box-shadow: 0 0 30px #848484;
+		}
+
+		.ren {
+			max-width: 1300px;
+			margin: 0 auto;
+			padding-top: 60px;
+			overflow: hidden;
+			height: 780px;
+			position: relative;
+		}
+
+		.imgcon {
+			width: 500%;
+			position: relative;
+			left: 0;
+		}
+
+		.imgcon img {
+			width: 3%;
+			display: block;
+			float: left;
+			margin-left: .4%;
+			box-shadow: 0 0 30px #848484;
+			border-radius: 14px;
+			transition: all .2s;
+		}
+
+		.spimg {
+			margin-right: .4%;
+		}
+
+		.colorstyle {
+			width: 220px;
+			margin-top: 50px;
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left: -110px;
+		}
+
+		.colorstyle img {
+			width: 100%;
+		}
+
+		.colorstyle div {
+			width: 20px;
+			height: 20px;
+			float: left;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		.blue {
+			background: #2e4de6;
+			border-radius: 50%;
+		}
+
+		.red {
+			background: #37ddc0;
+			border-radius: 50%;
+		}
+
+		.yellow {
+			background: #8924ef;
+			border-radius: 50%;
+		}
+
+		.pre,
+		.next {
+			opacity: 0;
+		}
+
+		.comment {
+			max-width: 1300px;
+			margin: 0 auto;
+		}
+
+		.footer {
+			width: 100%;
+			height: 100px;
+			background: #08051a;
+			text-align: center;
+			line-height: 100px;
+			font-family: "english";
+			font-size: 12px;
+			margin-top: 80px;
+			color: #fff;
+			letter-spacing: 1px;
+		}
+
+		#skill {
+			height: 1px;
+			width: 100%;
+			opacity: 0;
+		}
+
+		@media (max-width:1200px) {
+			.cell h1 {
+				font-size: 28px;
+			}
+
+			.cell h2 {
+				font-size: 14px;
+			}
+
+			.stopmusic {
+				right: 10px;
+				bottom: 10px;
+			}
+
+			.photo {
+				width: 100px;
+			}
+
+			.mec {
+				width: 100%;
+				height: 100px;
+				border-radius: 50%;
+			}
+
+			.name {
+				height: 30px;
+				text-align: center;
+				font-family: "chinese";
+				font-size: 16px;
+				position: absolute;
+				bottom: -30;
+				background: rgba(255, 255, 255, .7);
+				left: 50%;
+				margin-left: -50px;
+				line-height: 30px;
+				font-weight: bold;
+			}
+
+			.leftnav {
+				margin-right: 30px;
+			}
+
+			.nav img {
+				margin-left: 30px;
+			}
+		}
+
+		/*@media (max-width:800px){
+		
+	}*/
+
+		@media (max-width:650px) {
+			.cell h2 {
+				font-size: 12px;
+			}
+		}
+
+		@media (max-width:800px) {
+			.nav li {
+				display: none;
+			}
+
+			.xiaonav {
+				display: block;
+			}
+
+			.about>img {
+				width: 150%;
+			}
+
+			.stopmusic {
+				top: 60px;
+				left: 10px;
+				display: none;
+			}
+
+			.about>img {
+				width: 200%;
+				bottom: 31px;
+			}
+
+			.xiaonav {
+				margin-top: 20px;
+			}
+
+			.nav img {
+				margin-top: 25px;
+			}
+
+			.leftnav {
+				margin-right: 10px;
+			}
+
+			.nav img {
+				margin-left: 10px;
+				height: 20px;
+			}
+
+			.cell {
+				padding: 10px 8px;
+			}
+
+			.cell h2 {
+				font-size: 10px;
+				margin-top: 10px;
+			}
+
+			.cell h1 {
+				font-size: 16px;
+			}
+
+			.sanjiao {
+				width: 20px;
+				margin-left: 33%;
+				height: 30px;
+			}
+
+			.circle {
+				margin-left: 40%;
+			}
+
+			.xiaonav div {
+				width: 30px;
+				margin-bottom: 10px;
+			}
+
+			.xiaonav {
+				margin-top: 18px;
+			}
+
+			.ddxuanzhuana {
+				transform: rotate(30deg);
+			}
+
+			.ddxuanzhuanb {
+				transform: rotate(-30deg);
+			}
+
+			.me {
+				font-size: 12px;
+				margin-top: 12px;
+			}
+
+			.time {
+				font-size: 10px;
+			}
+
+			/*html,body {overflow:visible;}*/
+			welc {
+				font-size: 30px;
+				width: 200px;
+				height: 38px;
+				margin-left: -100px;
+				line-height: 40px;
+			}
+
+			.ability div {
+				width: 90%;
+				margin-left: 5%;
+				margin-top: 40px;
+				padding-bottom: 0;
+			}
+
+			.gif>div {
+				width: 90%;
+				margin-left: 5%;
+			}
+
+			.titlea span {
+				font-size: 36px;
+			}
+
+			.imgcon img {
+				width: 12%;
+				margin-left: 4%;
+				margin-right: 4%;
+				box-shadow: 0 0 20px #848484;
+			}
+
+			.pre,
+			.next {
+				opacity: 1;
+			}
+
+			.ren {
+				height: 500px;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<canvas id="space"></canvas>
+	<div class="nav">
+		<img src="img/hookjover.png" alt="logo">
+		<div class="leftnav">
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="#skill" class="toskill">Skills</a></li>
+				<li><a href="#works" class="toworks">Works</a></li>
+				<li><a href="mailto:904817189@qq.com">Contact</a></li>
+			</ul>
+			<div class="xiaonav">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="dlnav">
+			<dl>
+				<a href="">
+					<dd>HOME</dd>
+				</a>
+				<a href="#skill" class="toskill">
+					<dd>SKILLS</dd>
+				</a>
+				<a href="#works" class="toworks">
+					<dd>WORKS</dd>
+				</a>
+				<a href="mailto:904817189@qq.com">
+					<dd>CONTACT</dd>
+				</a>
+			</dl>
+		</div>
+
+	</div>
+
+	<div class="stopmusic"><img src="img/music.gif" alt="music"></div>
+
+	<div class="whole">
+		<welc class="welc">HOOKJOVER</welc>
+
+		<div class="photo">
+			<div class="mec">
+				<img src="img/photo1.png" alt="photo">
+				<div class="name">黄建伟</div>
+			</div>
+			<div class="me">播种阳光的少年</div>
+		</div>
+
+
+		<div class="career">
+			<div class="about">
+				<div class="story">
+					<div class="cell">
+						<h1>神奇的诞生日</h1>
+						<h2>一个开州</h2>
+					</div>
+					<img class="sanjiao" src="img/sanjiao.gif" alt="img">
+					<div class="circle"></div>
+					<div class="time">1995.03.15</div>
+				</div>
+				<div class="story">
+					<div class="cell">
+						<h1>高中青春梦想</h1>
+						<h2>一所开中</h2>
+					</div>
+					<img class="sanjiao" src="img/sanjiao.gif" alt="img">
+					<div class="circle"></div>
+					<div class="time">2010-2013</div>
+				</div>
+				<div class="story">
+					<div class="cell">
+						<h1>坚持不忘初心</h1>
+						<h2>一个佳大</h2>
+					</div>
+					<img class="sanjiao" src="img/sanjiao.gif" alt="img">
+					<div class="circle"></div>
+					<div class="time">NOW</div>
+				</div>
+				<div class="story">
+					<div class="cell">
+						<h1>遇见快乐成熟</h1>
+						<h2>一座城市</h2>
+					</div>
+					<img class="sanjiao" src="img/sanjiao.gif" alt="img">
+					<div class="circle"></div>
+					<div class="time">FUTURE</div>
+				</div>
+				<div class="story">
+					<div class="cell">
+						<h1>回忆思念泪水</h1>
+						<h2>一个故乡</h2>
+					</div>
+					<img class="sanjiao" src="img/sanjiao.gif" alt="img">
+					<div class="circle"></div>
+					<div class="time">SOME DAY</div>
+				</div>
+				<img src="img/line.png" alt="line">
+				<div class="clearfix"></div>
+			</div>
+
+
+		</div>
+
+	</div>
+	<audio autoplay loop>
+		<source src="MP3/kanong.mp3">
+		</source>
+	</audio>
+
+	<div class="tt">
+		<div id="skill"></div>
+		<div class="skill">
+			<div class="titlea">
+				<span>SKILLS</span>
+			</div>
+			<div class="ability">
+				<div class="diva">
+					<span style="font-weight:bold">FRONTEND DESIGN</span><br>
+					<span>HTML / CSS</span>
+					<span>jQuery</span>
+					<span>Responsive Design</span>
+				</div>
+				<div class="divb">
+					<span style="font-weight:bold">VISUAL DESIGN</span><br>
+					<span>VI Design</span>
+					<span>UI Visual Design</span>
+					<span>User Experience Thinking</span>
+				</div>
+				<div class="divc">
+					<span style="font-weight:bold">TEAM BUILDING</span><br>
+					<span>Smiling</span>
+					<span>Communication</span>
+					<span>Team working</span>
+				</div>
+				<span class="clearfix"></span>
+			</div>
+			<div id="works"></div>
+			<div class="titlea">
+				<span>WORKS</span>
+			</div>
+			<div class="app">
+				<img src="img/icon2.png" alt="app">
+			</div>
+			<div class="ren">
+				<div class="imgcon">
+					<img src="img/ren1.gif" alt="ren">
+					<img src="img/ren2.gif" alt="ren">
+					<img src="img/ren3.gif" alt="ren">
+					<img src="img/ren4.gif" alt="ren">
+					<img class="spimg" src="img/ren5.gif" alt="ren">
+				</div>
+				<div class="clearfix"></div>
+				<div class="colorstyle">
+					<div class="pre"><img src="img/pre.gif" alt="pre"></div>
+					<div class="blue"></div>
+					<div class="red"></div>
+					<div class="yellow"></div>
+					<div class="next"><img src="img/next.gif" alt="next"></div>
+				</div>
+
+
+			</div>
+			<div class="gif">
+				<div class="divf">
+					<div class="gifmask"></div>
+					<img src="img/works02.png" alt="gif">
+				</div>
+				<div class="divd">
+					<div class="gifmask"></div>
+					<img src="img/works01.png" alt="gif">
+				</div>
+				<div class="dive">
+					<div class="gifmask"></div>
+					<img src="img/works03.png" alt="gif">
+				</div>
+				<span class="clearfix"></span>
+			</div>
+
+			<div class="uv"><img src="img/uv.png" alt="youwei"></div>
+			<div class="youwei"><img src="img/jwh.png" alt="youwei"></div>
+			<br><br><br><br>
+			<div class="comment">
+				<!--PC和WAP自适应版-->
+				<div id="SOHUCS"></div>
+				<script type="text/javascript">
+					(function () {
+						var appid = 'cysYzfJgL';
+						var conf = 'prod_cc62693303387c8a52fc29594106b2e0';
+						var width = window.innerWidth || document.documentElement.clientWidth;
+						if (width < 960) {
+							window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+						} else { var loadJs = function (d, a) { var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement; var b = document.createElement("script"); b.setAttribute("type", "text/javascript"); b.setAttribute("charset", "UTF-8"); b.setAttribute("src", d); if (typeof a === "function") { if (window.attachEvent) { b.onreadystatechange = function () { var e = b.readyState; if (e === "loaded" || e === "complete") { b.onreadystatechange = null; a() } } } else { b.onload = a } } c.appendChild(b) }; loadJs("https://changyan.sohu.com/upload/changyan.js", function () { window.changyan.api.config({ appid: appid, conf: conf }) }); }
+					})(); </script>
+
+			</div>
+			<div class="footer">&copy; 2017 Build By Hookjover.<a href="https://beian.miit.gov.cn">渝ICP备17001090号-1</a>
+			</div>
+		</div>
+
+	</div>
+	<script>
+
+		var w = $(window).width()
+		var h = $(window).height()
+		$(".whole").css("width", w)
+		$(".whole").css("height", h)
+
+
+		$(document).scroll(
+			function () {
+				if ($(document).scrollTop() > .85 * h) {
+					$(".dlnav dd").mouseenter(
+						function () {
+							$(this).css("background", "rgba(255,54,58,1)")
+								.siblings().css("background", "rgba(255,115,115,1)")
+						}
+					)
+					$(".dlnav dd").mouseleave(
+						function () {
+							$(".dlnav dd").css("background", "rgba(255,115,115,1)")
+						}
+					)
+					$(".dlnav dd").css("background", "rgba(255,115,115,1)")
+					$(".nav").css("background", "#fff")
+					$(".xiaonav div").css("background", "#08051a")
+					$(".nav>img").attr("src", "img/hookjover.gif")
+					$(".leftnav a").css("color", "#08051a")
+				} else {
+					$(".dlnav dd").mouseenter(
+						function () {
+							$(this).css("background", "rgba(255,54,58,1)")
+								.siblings().css("background", "rgba(255,54,58,.7)")
+						}
+					)
+					$(".dlnav dd").mouseleave(
+						function () {
+							$(".dlnav dd").css("background", "rgba(255,54,58,.7)")
+						}
+					)
+					$(".dlnav dd").css("background", "rgba(255,54,58,.7)")
+					$(".nav").css("background", "none")
+					$(".xiaonav div").css("background", "#fff")
+					$(".nav>img").attr("src", "img/hookjover.png")
+					$(".leftnav a").css("color", "#fff")
+				}
+			}
+		)
+
+
+		$(".dlnav dd").mouseenter(
+			function () {
+				$(this).css("background", "rgba(255,54,58,1)")
+					.siblings().css("background", "rgba(255,54,58,.7)")
+			}
+		)
+		$(".dlnav dd").mouseleave(
+			function () {
+				$(".dlnav dd").css("background", "rgba(255,54,58,.7)")
+			}
+		)
+
+		var ccc
+		$(".leftnav a").mouseenter(
+			function () {
+				ccc = $(this).css("color")
+				$(this).css("color", "#ff7373")
+			}
+		)
+
+		$(".leftnav a").mouseleave(
+			function () {
+				$(this).css("color", ccc)
+			}
+		)
+
+		$(window).resize(
+			function () {
+				w = $(window).width()
+				h = $(window).height()
+				$(".whole").css("width", w)
+				$(".whole").css("height", h)
+				$(".dlnav").stop(true, true).animate({ right: '-100%' }, 400)
+				$(".xiaonav div").eq(1).animate({ width: 40 }, 50)
+				$(".xiaonav div").eq(0).removeClass("ddxuanzhuana")
+				$(".xiaonav div").eq(0).css("width", 40)
+				$(".xiaonav div").eq(2).removeClass("ddxuanzhuanb")
+				$(".xiaonav div").eq(2).css("width", 40)
+			}
+		)
+
+
+		$(window).ready(
+			function () {
+				w = $(window).width()
+				if (w < 580) {
+					$(".imgcon img").css("width", "12%")
+					$(".app img").attr("src", "img/icon.png")
+				} else if (w > 580 && w < 750) {
+					$(".imgcon img").css("width", "12%")
+					$(".app img").attr("src", "img/icon2.png")
+				} else {
+					$(".imgcon img").css("width", "3%")
+					$(".imgcon img").eq(0).css("width", "5.6%")
+					$(".app img").attr("src", "img/icon2.png")
+				}
+			}
+		)
+
+
+
+		$(window).resize(
+			function () {
+				w = $(window).width()
+				if (w < 580) {
+					$(".imgcon img").css("width", "12%")
+					$(".app img").attr("src", "img/icon.png")
+					$(".photo").css("margin-top", 110)
+					$(".career").css("bottom", 20)
+				} else if (w > 580 && w < 750) {
+					$(".imgcon img").css("width", "12%")
+					$(".app img").attr("src", "img/icon2.png")
+					$(".photo").css("margin-top", 110)
+					$(".career").css("bottom", 20)
+				} else {
+					$(".imgcon").stop().animate({ left: 0 }, 100)
+					$(".imgcon img").css("width", "3%")
+					$(".imgcon img").eq(0).css("width", "5.6%")
+					$(".app img").attr("src", "img/icon2.png")
+					$(".photo").css("margin-top", 160)
+					$(".career").css("bottom", 100)
+				}
+			}
+		)
+
+		$("welc").click(
+			function () {
+				w = $(window).width()
+				if (w < 580) {
+					$(".photo").css("margin-top", 110)
+					$(".career").animate({ bottom: 20 }, 1000)
+				} else if (w > 580 && w < 750) {
+					$(".photo").css("margin-top", 110)
+					$(".career").animate({ bottom: 20 }, 1000)
+				} else {
+					$(".photo").css("margin-top", 160)
+					$(".career").animate({ bottom: 100 }, 1000)
+				}
+			}
+		)
+
+
+		$(".xiaonav").click(
+			function () {
+				if ($(".xiaonav div").eq(0).hasClass("ddxuanzhuana")) {
+					$(".dlnav").stop(true, true).animate({ right: '-100%' }, 400)
+					$(".xiaonav div").eq(1).animate({ width: 40 }, 50)
+					$(".xiaonav div").eq(0).removeClass("ddxuanzhuana")
+					$(".xiaonav div").eq(0).css("width", 40)
+					$(".xiaonav div").eq(2).removeClass("ddxuanzhuanb")
+					$(".xiaonav div").eq(2).css("width", 40)
+				} else {
+					$(".dlnav").stop(true, true).animate({ right: 0 }, 400)
+					$(".xiaonav div").eq(1).animate({ width: 0 }, 50)
+					$(".xiaonav div").eq(0).addClass("ddxuanzhuana")
+					$(".xiaonav div").eq(0).css("width", 46)
+					$(".xiaonav div").eq(2).addClass("ddxuanzhuanb")
+					$(".xiaonav div").eq(2).css("width", 46)
+				}
+			}
+		)
+
+		$(".dlnav dd").click(
+			function () {
+				$(".dlnav").stop(true, true).animate({ right: '-100%' }, 400)
+				$(".xiaonav div").eq(1).animate({ width: 40 }, 50)
+				$(".xiaonav div").eq(0).removeClass("ddxuanzhuana")
+				$(".xiaonav div").eq(0).css("width", 40)
+				$(".xiaonav div").eq(2).removeClass("ddxuanzhuanb")
+				$(".xiaonav div").eq(2).css("width", 40)
+			}
+		)
+
+
+		/*setInterval(
+			function(){
+				if(t<5){
+					$(".about .story").eq(t).children(".cell,.sanjiao").css("opacity",.7)
+					$(".about .story").eq(t).siblings(".story").children(".cell,.sanjiao").css("opacity",0)
+					$(".about .story").eq(t).children(".circle").css("background","#ff7373")
+					$(".about .story").eq(t).siblings(".story").children(".circle").css("background","#fff")
+					t=t+1
+					}
+					else{
+						t=0
+						}
+				},6000
+		)*/
+
+
+
+
+		$(document).ready(
+			function () {
+				$("welc").css("opacity", 1)
+				$("welc").animate({ top: "40%" }, 1000)
+			}
+
+		)
+		var x = true
+		$(".stopmusic").click(
+			function () {
+				if (x) {
+					$(".stopmusic img").attr("src", "img/music2.gif")
+					$("audio").attr("src", "0")
+					x = false
+				}
+				else {
+					$(".stopmusic img").attr("src", "img/music.gif")
+					$("audio").attr("src", "MP3/kanong.mp3")
+					x = true
+				}
+
+			}
+		)
+
+		var t = 0
+		$(".tt").hide()
+		$("welc").click(
+			function () {
+				$(".tt").show()
+				$("welc").html("WELCOME")
+				$("welc").css("background", "#fff")
+				$("welc").css("opacity", 0)
+				$("welc").animate({ top: "50%" }, 1000)
+				$("welc").fadeOut(1000)
+				$(".nav").animate({ top: "0%" }, 1000)
+				$(".nav").css("opacity", 1)
+				$(".photo").css("opacity", 1)
+				$(".career").css("opacity", 1)
+				$(".about").css("opacity", 1)
+				setInterval(
+					function () {
+						if (t < 5) {
+							$(".about .story").eq(t).children(".cell,.sanjiao").css("opacity", .7)
+							$(".about .story").eq(t).siblings(".story").children(".cell,.sanjiao").css("opacity", 0)
+							$(".about .story").eq(t).children(".circle").css("background", "#ff7373")
+							$(".about .story").eq(t).siblings(".story").children(".circle").css("background", "#fff")
+							t = t + 1
+						}
+						else {
+							t = 0
+						}
+					}, 6000
+				)
+			}
+
+		)
+
+		$("welc").mouseenter(
+			function () {
+				$("welc").html("WELCOME")
+			}
+		)
+		$("welc").mouseleave(
+			function () {
+				$("welc").html("HOOKJOVER")
+			}
+		)
+
+		$(".photo").mouseenter(
+			function () {
+				$(".name").stop(true, true).animate({ bottom: 0 }, 200)
+			}
+		)
+		$(".photo").mouseleave(
+			function () {
+				$(".name").stop(true, true).animate({ bottom: -30 }, 200)
+			}
+		)
+
+		$(".gifmask").hide()
+		$(".gif>div").mouseenter(
+			function () {
+				$(this).children(".gifmask").stop(false, true).fadeIn()
+			}
+		)
+		$(".gif>div").mouseleave(
+			function () {
+				$(this).children(".gifmask").stop(false, true).fadeOut()
+			}
+		)
+		/*$(".story").css("opacity",1)
+		$(".career").children(".circle").click(
+			function(){
+				var y=$(this).index()
+				document.title=y
+				$(this).css("background","#ff7373").siblings(".circle").css("background","#fff")
+				$(".about").children().eq(y).css("opacity",1)
+				$(".about").children().eq(y).siblings().css("opacity",0)
+				}
+		)
+		*/
+		$(".circle").mouseenter(
+			function () {
+				t = $(this).parent().index()
+				$(this).css("background", "#ff7373").parent().siblings().children(".circle").css("background", "#fff")
+				$(this).siblings(".cell").css("opacity", .7)
+				$(this).siblings(".sanjiao").css("opacity", .7)
+				$(this).parent().siblings().children(".cell").css("opacity", 0)
+				$(this).parent().siblings().children(".sanjiao").css("opacity", 0)
+			}
+		)
+
+
+
+		$(document).ready(function () {
+			$(".leftnav .toskill,.dlnav .toskill,.leftnav .toworks,.dlnav .toworks").click(function () {
+				var sss = $($(this).attr("href")).offset().top
+				$("html, body").animate({
+					scrollTop: sss - 20 + "px"
+				}, {
+					duration: 500,
+					easing: "swing"
+				});
+				return false;
+			});
+		});
+
+
+		$(".blue").click(
+			function () {
+				$(".imgcon img").eq(0).attr("src", "img/ren1.gif")
+				$(".imgcon img").eq(1).attr("src", "img/ren2.gif")
+				$(".imgcon img").eq(2).attr("src", "img/ren3.gif")
+				$(".imgcon img").eq(3).attr("src", "img/ren4.gif")
+				$(".imgcon img").eq(4).attr("src", "img/ren5.gif ")
+			}
+		)
+
+		$(".red").click(
+			function () {
+				$(".imgcon img").eq(0).attr("src", "img/reng.gif")
+				$(".imgcon img").eq(1).attr("src", "img/renh.gif")
+				$(".imgcon img").eq(2).attr("src", "img/renj.gif")
+				$(".imgcon img").eq(3).attr("src", "img/renk.gif")
+				$(".imgcon img").eq(4).attr("src", "img/renl.gif")
+			}
+		)
+
+		$(".yellow").click(
+			function () {
+				$(".imgcon img").eq(0).attr("src", "img/rena.gif")
+				$(".imgcon img").eq(1).attr("src", "img/renb.gif")
+				$(".imgcon img").eq(2).attr("src", "img/renc.gif")
+				$(".imgcon img").eq(3).attr("src", "img/rend.gif")
+				$(".imgcon img").eq(4).attr("src", "img/rene.gif")
+			}
+		)
+
+
+
+		$(".imgcon img").mouseenter(
+			function () {
+				if (w > 800) {
+					$(this).css("width", "5.6%")
+						.siblings().css("width", "3%")
+				} else {
+
+				}
+			}
+		)
+
+		var ii = 0
+		var jj = $(".imgcon img").length
+		$(".pre").click(
+			function () {
+				if (w < 800) {
+					if (ii < jj - 1) {
+						ii = ii + 1
+						$(".imgcon").stop().animate({ left: -1 * w * ii }, 400)
+					} else {
+						$(".imgcon").css("left", 0)
+						ii = 0
+					}
+
+				}
+				else { }
+			}
+		)
+
+		$(".next").click(
+			function () {
+				if (w < 800) {
+					if (ii > 0) {
+						ii = ii - 1
+						$(".imgcon").stop().animate({ left: -1 * w * ii }, 400)
+					} else {
+						$(".imgcon").css("left", 0)
+						ii = 0
+					}
+
+				}
+				else { }
+			}
+		)
+
+
+
+
+
+		//based on an Example
+		window.requestAnimFrame = (function () { return window.requestAnimationFrame })();
+		var canvas = document.getElementById("space");
+		var c = canvas.getContext("2d");
+
+		var numStars = 1900;
+		var radius = '0.' + Math.floor(Math.random() * 9) + 1;
+		var focalLength = canvas.width * 2;
+		var warp = 0;
+		var centerX, centerY;
+
+		var stars = [], star;
+		var i;
+
+		var animate = true;
+
+		initializeStars();
+
+		function executeFrame() {
+
+			if (animate)
+				requestAnimFrame(executeFrame);
+			moveStars();
+			drawStars();
+		}
+
+		function initializeStars() {
+			centerX = canvas.width / 2;
+			centerY = canvas.height / 2;
+
+			stars = [];
+			for (i = 0; i < numStars; i++) {
+				star = {
+					x: Math.random() * canvas.width,
+					y: Math.random() * canvas.height,
+					z: Math.random() * canvas.width,
+					o: '0.' + Math.floor(Math.random() * 99) + 1
+				};
+				stars.push(star);
+			}
+		}
+
+		function moveStars() {
+			for (i = 0; i < numStars; i++) {
+				star = stars[i];
+				star.z--;
+
+				if (star.z <= 0) {
+					star.z = canvas.width;
+				}
+			}
+		}
+
+		function drawStars() {
+			var pixelX, pixelY, pixelRadius;
+
+			// Resize to the screen
+			if (canvas.width != window.innerWidth || canvas.width != window.innerWidth) {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				initializeStars();
+			}
+			if (warp == 0) {
+				c.fillStyle = "rgba(8,5,26,1)";
+				c.fillRect(0, 0, canvas.width, canvas.height);
+			}
+			c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
+			for (i = 0; i < numStars; i++) {
+				star = stars[i];
+
+				pixelX = (star.x - centerX) * (focalLength / star.z);
+				pixelX += centerX;
+				pixelY = (star.y - centerY) * (focalLength / star.z);
+				pixelY += centerY;
+				if (w < 800) {
+					pixelRadius = .5 * (focalLength / star.z);
+				}
+				else { pixelRadius = 1 * (focalLength / star.z); };
+
+				c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
+				c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
+				//c.fill();
+			}
+		}
+
+		/*document.getElementById('warp').addEventListener("click",function(e){
+		  window.c.beginPath();
+		  window.c.clearRect(0, 0, window.canvas.width, window.canvas.height);
+		  window.warp = warp ? 0 : 1;
+		  executeFrame();
+		});*/
+
+		executeFrame();
+
+	</script>
+
+</body>
+
+</html>
